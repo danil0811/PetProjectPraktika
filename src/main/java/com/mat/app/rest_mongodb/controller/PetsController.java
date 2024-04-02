@@ -35,8 +35,8 @@ public class PetsController {
         return petService.getSinglePet(id);
     }
 
-    @PostMapping
-    public Pet createPet(@RequestBody @Valid PetCreateForm form) {
+    @PostMapping("/save")
+    public Pet savePet(@RequestBody @Valid PetCreateForm form) {
         Pet pet = petService.createPet(new Pet(form.getName(), form.getSpecies(), form.getBreed()));
         return pet;
     }
@@ -61,3 +61,4 @@ public class PetsController {
         return petService.listByBreed(breed);
     }
 }
+

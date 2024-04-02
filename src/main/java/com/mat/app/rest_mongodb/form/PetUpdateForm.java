@@ -1,10 +1,11 @@
 package com.mat.app.rest_mongodb.form;
 
+// Класс представляет форму обновления данных о питомце
 public class PetUpdateForm {
 
-    private String name;
-    private String species;
-    private String breed;
+    private String name; //Имя питомца
+    private String species; // Вид питомца
+    private String breed; //Порода питомца
 
     public String getName() {
         return name;

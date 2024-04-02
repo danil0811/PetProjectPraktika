@@ -19,11 +19,13 @@ public class PetServiceImpl implements PetService {
     }
 
     @Override
+    // Получение списка всех питомцев из репозитория
     public List<Pet> list() {
         return petRepository.findAll();
     }
 
     @Override
+    // Получение одного питомца по его идентификатору
     public Optional<Pet> getSinglePet(String id) {
         return petRepository.findById(id);
     }
@@ -45,16 +47,19 @@ public class PetServiceImpl implements PetService {
     }
 
     @Override
+    // Удаление питомца по его идентификатору
     public void deletePet(String id) {
         petRepository.deleteById(id);
     }
 
     @Override
+    // Получение списка питомцев по их виду
     public List<Pet> listBySpecies(String species) {
         return petRepository.findBySpecies(species);
     }
 
     @Override
+    // Получение списка питомцев по их породе
     public List<Pet> listByBreed(String breed) {
         return petRepository.findByBreed(breed);
     }

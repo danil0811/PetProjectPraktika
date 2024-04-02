@@ -20,18 +20,21 @@ public class WebConfig implements WebMvcConfigurer {
     @Autowired
     private ApplicationContext applicationContext;
 
+    // Метод для создания и настройки преобразования шаблонов Thymeleaf
     @Bean
     @Description("Thymeleaf Template Resolver")
     public SpringResourceTemplateResolver templateResolver() {
         SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();
         templateResolver.setApplicationContext(applicationContext);
-        templateResolver.setPrefix("/WEB-INF/views/");
+        templateResolver.setPrefix("/WEB-INF/views/");// Путь к шаблонам
         templateResolver.setSuffix(".html");
-        templateResolver.setTemplateMode("HTML5");
+        templateResolver.setTemplateMode("HTML5");// Режим шаблонов
 
         return templateResolver;
     }
 
+
+    // Метод для создания и настройки шаблонного движка Thymeleaf
     public SpringTemplateEngine templateEngine() {
         SpringTemplateEngine templateEngine = new SpringTemplateEngine();
         templateEngine.setTemplateResolver(templateResolver());
@@ -39,6 +42,8 @@ public class WebConfig implements WebMvcConfigurer {
         return templateEngine;
     }
 
+
+    // Метод для создания и настройки источника сообщений Spring
     @Bean
     @Description("Spring Message Resolver")
     public ResourceBundleMessageSource messageSource() {
@@ -47,6 +52,7 @@ public class WebConfig implements WebMvcConfigurer {
         return messageSource;
     }
 
+    //Настройка преобразования шаблона в ресурс
     @Override
     public void configureViewResolvers(ViewResolverRegistry registry) {
         ThymeleafViewResolver resolver = new ThymeleafViewResolver();

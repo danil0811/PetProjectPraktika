@@ -2,6 +2,7 @@ package com.mat.app.rest_mongodb.form;
 
 public class PetCreateForm {
 
+    // Поля для хранения данных о питомце
     private String name;
     private String species;
     private String breed;

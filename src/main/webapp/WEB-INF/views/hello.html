@@ -1,11 +1,56 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html>
 <head>
     <meta charset="UTF-8">
-    <title>test</title>
+    <title>Ввод данных о питомце</title>
 </head>
 <body>
-<p th:text="#{invalid.username.msg}">Неверное имя пользователя</p>
+<h2>Введите данные о питомце</h2>
+
+<form id="petForm">
+    <label for="name">Имя питомца:</label><br>
+    <input type="text" id="name" name="name"><br>
+
+    <label for="age">Возраст питомца:</label><br>
+    <input type="number" id="age" name="age"><br>
+
+    <label for="breed">Порода питомца:</label><br>
+    <input type="text" id="breed" name="breed"><br>
+
+    <label for="species">Тип питомца:</label><br>
+    <select id="species" name="species">
+        <option value="dog">Собака</option>
+        <option value="cat">Кошка</option>
+        <option value="bird">Птица</option>
+        <option value="fish">Рыбка</option>
+    </select><br>
+
+    <input type="submit" value="Сохранить">
+</form>
+
+<script>
+    document.getElementById('petForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        var formData = {
+            name: document.getElementById('name').value,
+            age: document.getElementById('age').value,
+            breed: document.getElementById('breed').value,
+            species: document.getElementById('species').value
+        };
+
+        fetch('/api/pets/save', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
+        })
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch(error => console.error('Error:', error));
+    });
+</script>
 
 </body>
 </html>

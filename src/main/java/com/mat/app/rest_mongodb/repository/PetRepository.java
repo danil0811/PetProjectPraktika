@@ -9,7 +9,7 @@ import java.util.Optional;
 
 @Repository
 public interface PetRepository extends CrudRepository<Pet, String> {
-
+    // Методы для поиска питомцев по определенным критериям
     List<Pet> findBySpecies(String species);
 
     List<Pet> findByBreed(String breed);

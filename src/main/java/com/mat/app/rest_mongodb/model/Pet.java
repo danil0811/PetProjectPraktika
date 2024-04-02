@@ -11,7 +11,7 @@ import javax.validation.constraints.NotNull;
 public class Pet {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //автоматическую генерацию значения идентификатора
     private Long id;
 
     @NotBlank
@@ -35,6 +35,7 @@ public class Pet {
         this.breed = breed;
     }
 
+    // Геттеры и сеттеры для доступа к полям класса
     public Long getId() {
         return id;
     }

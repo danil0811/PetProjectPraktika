@@ -5,6 +5,7 @@ import com.mat.app.rest_mongodb.model.Pet;
 import java.util.List;
 import java.util.Optional;
 
+// Интерфейс, описывающий сервис для работы с объектами Pet
 public interface PetService {
     Iterable<Pet> list();
     Optional<Pet> getSinglePet(String id);
